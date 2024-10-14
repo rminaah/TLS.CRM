@@ -6,7 +6,7 @@ function ChartViewModel() {
     var self = this;
 
     //> Attributes
-    self.WebAPIURL = "http://192.168.5.59/TLS/api/data/v9.0";
+    self.WebAPIURL = "";
     self.Step = ko.observable(0);
     self.ShamsiStartDate = ko.observable();
     self.ShamsiEndDate = ko.observable();
