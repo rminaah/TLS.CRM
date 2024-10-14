@@ -1,0 +1,12 @@
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Webresources\bin\Debug\TLS.CRM.Webresources.dll
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Webresources\bin\Debug\TLS.CRM.Webresources.pdb
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Webresources\obj\Debug\TLS.CRM.Webresources.csprojAssemblyReference.cache
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Webresources\obj\Debug\TLS.CRM.Webresources.csproj.CoreCompileInputs.cache
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Webresources\obj\Debug\TLS.CRM.Webresources.dll
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Webresources\obj\Debug\TLS.CRM.Webresources.pdb
+D:\CRM\Plugin\TLS.CRM.Webresources\bin\Debug\TLS.CRM.Webresources.dll
+D:\CRM\Plugin\TLS.CRM.Webresources\bin\Debug\TLS.CRM.Webresources.pdb
+D:\CRM\Plugin\TLS.CRM.Webresources\obj\Debug\TLS.CRM.Webresources.csprojAssemblyReference.cache
+D:\CRM\Plugin\TLS.CRM.Webresources\obj\Debug\TLS.CRM.Webresources.csproj.CoreCompileInputs.cache
+D:\CRM\Plugin\TLS.CRM.Webresources\obj\Debug\TLS.CRM.Webresources.dll
+D:\CRM\Plugin\TLS.CRM.Webresources\obj\Debug\TLS.CRM.Webresources.pdb

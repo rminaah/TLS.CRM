@@ -1,0 +1,15 @@
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM\obj\Debug\TLS.CRM.Plugins.csproj.CoreCompileInputs.cache
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM\obj\Debug\TLS.CRM.dll
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM\obj\Debug\TLS.CRM.pdb
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM\obj\Debug\TLS.CRM.Plugins.csprojAssemblyReference.cache
+D:\CRM\Plugin\TLS.CRM\obj\Debug\TLS.CRM.Plugins.csprojAssemblyReference.cache
+D:\CRM\Plugin\TLS.CRM\obj\Debug\TLS.CRM.Plugins.csproj.CoreCompileInputs.cache
+D:\CRM\Plugin\TLS.CRM\obj\Debug\TLS.CRM.dll
+D:\CRM\Plugin\TLS.CRM\obj\Debug\TLS.CRM.pdb
+D:\Mina\tondar\Plugin\TLS.CRM\obj\Debug\TLS.CRM.Plugins.csproj.AssemblyReference.cache
+D:\Mina\tondar\Plugin\TLS.CRM\obj\Debug\TLS.CRM.Plugins.csproj.CoreCompileInputs.cache
+D:\Mina\tondar\Plugin\TLS.CRM\obj\Debug\TLS.CRM.dll
+D:\Mina\tondar\Plugin\TLS.CRM\obj\Debug\TLS.CRM.pdb
+D:\Mina\tondar\Plugin\TLS.CRM\bin\Debug\TLS.CRM.dll.config
+D:\Mina\tondar\Plugin\TLS.CRM\bin\Debug\TLS.CRM.dll
+D:\Mina\tondar\Plugin\TLS.CRM\bin\Debug\TLS.CRM.pdb

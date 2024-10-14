@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{27A37144-40C2-41D3-A1B4-19CE90C7D29F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TLS.CRM.Webresources</RootNamespace>
+    <AssemblyName>TLS.CRM.Webresources</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\all.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\DeviceCharts.css" />
+    <Content Include="Content\fontawesome-webfont.ttf.css" />
+    <Content Include="Content\fontawesome.css" />
+    <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Scripts\DateRangeFilterControl.js" />
+    <Content Include="WebResources\tls_\RepairsBasedOnUserAndStatus.html" />
+    <Content Include="WebResources\XMLFile1.xml" />
+    <None Include="Content\fontawesome-webfont.eot" />
+    <None Include="Content\FontAwesome.otf" />
+    <Content Include="Content\Leave.css" />
+    <Content Include="Content\persian-datepicker.css" />
+    <Content Include="Content\persian-datepicker.min.css" />
+    <Content Include="Content\style\Black\editor.png" />
+    <Content Include="Content\style\Black\imagebrowser.png" />
+    <Content Include="Content\style\Black\loading-image.gif" />
+    <Content Include="Content\style\Black\loading.gif" />
+    <Content Include="Content\style\Black\slider-h.gif" />
+    <Content Include="Content\style\Black\slider-v.gif" />
+    <Content Include="Content\style\Black\sprite.png" />
+    <Content Include="Content\style\Black\sprite_2x.png" />
+    <Content Include="Content\style\BlueOpal\editor.png" />
+    <Content Include="Content\style\BlueOpal\imagebrowser.png" />
+    <Content Include="Content\style\BlueOpal\loading-image.gif" />
+    <Content Include="Content\style\BlueOpal\loading.gif" />
+    <Content Include="Content\style\BlueOpal\slider-h.gif" />
+    <Content Include="Content\style\BlueOpal\slider-v.gif" />
+    <Content Include="Content\style\BlueOpal\sprite.png" />
+    <Content Include="Content\style\BlueOpal\sprite_2x.png" />
+    <Content Include="Content\style\Bootstrap\editor.png" />
+    <Content Include="Content\style\Bootstrap\imagebrowser.png" />
+    <Content Include="Content\style\Bootstrap\loading-image.gif" />
+    <Content Include="Content\style\Bootstrap\loading.gif" />
+    <Content Include="Content\style\Bootstrap\slider-h.gif" />
+    <Content Include="Content\style\Bootstrap\slider-v.gif" />
+    <Content Include="Content\style\Bootstrap\sprite.png" />
+    <Content Include="Content\style\Bootstrap\sprite_2x.png" />
+    <Content Include="Content\style\Default\editor.png" />
+    <Content Include="Content\style\Default\imagebrowser.png" />
+    <Content Include="Content\style\Default\loading-image.gif" />
+    <Content Include="Content\style\Default\loading.gif" />
+    <Content Include="Content\style\Default\slider-h.gif" />
+    <Content Include="Content\style\Default\slider-v.gif" />
+    <Content Include="Content\style\Default\sprite.png" />
+    <Content Include="Content\style\Default\sprite_2x.png" />
+    <Content Include="Content\style\HighContrast\editor.png" />
+    <Content Include="Content\style\HighContrast\imagebrowser.png" />
+    <Content Include="Content\style\HighContrast\loading-image.gif" />
+    <Content Include="Content\style\HighContrast\loading.gif" />
+    <Content Include="Content\style\HighContrast\slider-h.gif" />
+    <Content Include="Content\style\HighContrast\slider-v.gif" />
+    <Content Include="Content\style\HighContrast\sprite.png" />
+    <Content Include="Content\style\HighContrast\sprite_2x.png" />
+    <Content Include="Content\style\kendo.black.min.css" />
+    <Content Include="Content\style\kendo.blueopal.min.css" />
+    <Content Include="Content\style\kendo.bootstrap.min.css" />
+    <Content Include="Content\style\kendo.common.min.css" />
+    <Content Include="Content\style\kendo.default.min.css" />
+    <Content Include="Content\style\kendo.highcontrast.min.css" />
+    <Content Include="Content\style\kendo.metro.min.css" />
+    <Content Include="Content\style\kendo.metroblack.min.css" />
+    <Content Include="Content\style\kendo.moonlight.min.css" />
+    <Content Include="Content\style\kendo.rtl.min.css" />
+    <Content Include="Content\style\kendo.silver.min.css" />
+    <Content Include="Content\style\kendo.uniform.min.css" />
+    <Content Include="Content\style\MetroBlack\editor.png" />
+    <Content Include="Content\style\MetroBlack\imagebrowser.png" />
+    <Content Include="Content\style\MetroBlack\loading-image.gif" />
+    <Content Include="Content\style\MetroBlack\loading.gif" />
+    <Content Include="Content\style\MetroBlack\slider-h.gif" />
+    <Content Include="Content\style\MetroBlack\slider-v.gif" />
+    <Content Include="Content\style\MetroBlack\sprite.png" />
+    <Content Include="Content\style\MetroBlack\sprite_2x.png" />
+    <Content Include="Content\style\Metro\editor.png" />
+    <Content Include="Content\style\Metro\imagebrowser.png" />
+    <Content Include="Content\style\Metro\loading-image.gif" />
+    <Content Include="Content\style\Metro\loading.gif" />
+    <Content Include="Content\style\Metro\slider-h.gif" />
+    <Content Include="Content\style\Metro\slider-v.gif" />
+    <Content Include="Content\style\Metro\sprite.png" />
+    <Content Include="Content\style\Metro\sprite_2x.png" />
+    <Content Include="Content\style\Moonlight\editor.png" />
+    <Content Include="Content\style\Moonlight\imagebrowser.png" />
+    <Content Include="Content\style\Moonlight\loading-image.gif" />
+    <Content Include="Content\style\Moonlight\loading.gif" />
+    <Content Include="Content\style\Moonlight\slider-h.gif" />
+    <Content Include="Content\style\Moonlight\slider-v.gif" />
+    <Content Include="Content\style\Moonlight\sprite.png" />
+    <Content Include="Content\style\Moonlight\sprite_2x.png" />
+    <Content Include="Content\style\Silver\editor.png" />
+    <Content Include="Content\style\Silver\imagebrowser.png" />
+    <Content Include="Content\style\Silver\loading-image.gif" />
+    <Content Include="Content\style\Silver\loading.gif" />
+    <Content Include="Content\style\Silver\slider-h.gif" />
+    <Content Include="Content\style\Silver\slider-v.gif" />
+    <Content Include="Content\style\Silver\sprite.png" />
+    <Content Include="Content\style\Silver\sprite_2x.png" />
+    <Content Include="Content\style\skins\aqua\active-bg.gif" />
+    <Content Include="Content\style\skins\aqua\dark-bg.gif" />
+    <Content Include="Content\style\skins\aqua\hover-bg.gif" />
+    <Content Include="Content\style\skins\aqua\menuarrow.gif" />
+    <Content Include="Content\style\skins\aqua\normal-bg.gif" />
+    <Content Include="Content\style\skins\aqua\rowhover-bg.gif" />
+    <Content Include="Content\style\skins\aqua\status-bg.gif" />
+    <Content Include="Content\style\skins\aqua\theme.css" />
+    <Content Include="Content\style\skins\aqua\title-bg.gif" />
+    <Content Include="Content\style\skins\aqua\today-bg.gif" />
+    <Content Include="Content\style\skins\calendar-blue.css" />
+    <Content Include="Content\style\skins\calendar-blue2.css" />
+    <Content Include="Content\style\skins\calendar-brown.css" />
+    <Content Include="Content\style\skins\calendar-green.css" />
+    <Content Include="Content\style\skins\calendar-system.css" />
+    <Content Include="Content\style\skins\calendar-tas.css" />
+    <Content Include="Content\style\skins\calendar-win2k-1.css" />
+    <Content Include="Content\style\skins\calendar-win2k-2.css" />
+    <Content Include="Content\style\skins\calendar-win2k-cold-1.css" />
+    <Content Include="Content\style\skins\calendar-win2k-cold-2.css" />
+    <Content Include="Content\style\skins\menuarrow.gif" />
+    <Content Include="Content\style\skins\menuarrow2.gif" />
+    <Content Include="Content\style\template.css" />
+    <Content Include="Content\style\textures\brushed-metal.png" />
+    <Content Include="Content\style\textures\dots1.png" />
+    <Content Include="Content\style\textures\dots10.png" />
+    <Content Include="Content\style\textures\dots11.png" />
+    <Content Include="Content\style\textures\dots12.png" />
+    <Content Include="Content\style\textures\dots13.png" />
+    <Content Include="Content\style\textures\dots2.png" />
+    <Content Include="Content\style\textures\dots3.png" />
+    <Content Include="Content\style\textures\dots4.png" />
+    <Content Include="Content\style\textures\dots5.png" />
+    <Content Include="Content\style\textures\dots6.png" />
+    <Content Include="Content\style\textures\dots7.png" />
+    <Content Include="Content\style\textures\dots8.png" />
+    <Content Include="Content\style\textures\dots9.png" />
+    <Content Include="Content\style\textures\glass-lighter.png" />
+    <Content Include="Content\style\textures\glass.png" />
+    <Content Include="Content\style\textures\highlight.png" />
+    <Content Include="Content\style\textures\hsv-gradient.png" />
+    <Content Include="Content\style\textures\hue.png" />
+    <Content Include="Content\style\textures\leather1.png" />
+    <Content Include="Content\style\textures\leather2.png" />
+    <Content Include="Content\style\textures\noise.png" />
+    <Content Include="Content\style\textures\stripe1.png" />
+    <Content Include="Content\style\textures\stripe2.png" />
+    <Content Include="Content\style\textures\stripe3.png" />
+    <Content Include="Content\style\textures\stripe4.png" />
+    <Content Include="Content\style\textures\stripe5.png" />
+    <Content Include="Content\style\textures\stripe6.png" />
+    <Content Include="Content\style\textures\transparency.png" />
+    <Content Include="Content\style\textures\transtexture.png" />
+    <Content Include="Content\style\ui-lightness\images\animated-overlay.gif" />
+    <Content Include="Content\style\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\style\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\style\ui-lightness\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Content\style\ui-lightness\jquery-ui-1.10.3.custom.min.css" />
+    <Content Include="Content\style\Uniform\editor.png" />
+    <Content Include="Content\style\Uniform\imagebrowser.png" />
+    <Content Include="Content\style\Uniform\loading-image.gif" />
+    <Content Include="Content\style\Uniform\loading.gif" />
+    <Content Include="Content\style\Uniform\slider-h.gif" />
+    <Content Include="Content\style\Uniform\slider-v.gif" />
+    <Content Include="Content\style\Uniform\sprite.png" />
+    <Content Include="Content\style\Uniform\sprite_2x.png" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Scripts\JavaScript1.js" />
+    <Content Include="Scripts\SampleDeviceCharts.js" />
+    <Content Include="Scripts\jquery-2.2.2.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.2.js" />
+    <Content Include="Scripts\jquery-2.2.2.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\kendo.all.min.js" />
+    <Content Include="Scripts\kendo.culture.fa-IR.min.js" />
+    <Content Include="Scripts\kendo.fa-IR.js" />
+    <Content Include="Scripts\kendo.web.min.js" />
+    <Content Include="Scripts\knockout_3.4.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\persian-date.js" />
+    <Content Include="Scripts\persian-date.min.js" />
+    <Content Include="Scripts\persian-datepicker.js" />
+    <Content Include="Scripts\persian-datepicker.min.js" />
+    <Content Include="Scripts\DeviceCharts.js" />
+    <Content Include="WebResources\tls_\HTMLPage1.html" />
+    <Content Include="WebResources\tls_\LeaveDashboard.html" />
+    <Content Include="WebResources\SampleDeviceCharts.html" />
+    <Content Include="WebResources\tls_\DeviceCharts.html" />
+    <Content Include="WebResources\main.html" />
+    <Content Include="WebResources\SampleLeaveChart.html" />
+    <Content Include="WebResources\tls_\Leave.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Scripts\jquery-2.2.2.min.map" />
+    <None Include="Scripts\kendo.culture.fa-IR.min.js.map" />
+    <None Include="Scripts\moment-with-locales.min.js.map" />
+    <None Include="Scripts\moment.min.js.map" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,4 @@
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM\obj\Debug\TLS.CRM.csproj.CoreCompileInputs.cache
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM\obj\Debug\TLS.CRM.dll
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM\obj\Debug\TLS.CRM.pdb
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM\obj\Debug\TLS.CRM.csprojAssemblyReference.cache

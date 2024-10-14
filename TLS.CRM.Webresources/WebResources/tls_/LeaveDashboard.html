@@ -1,0 +1,553 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="./tls_persian-datepicker.css" rel="stylesheet">
+    <link href="./tls_bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="./tls_kendo.rtl.min.css" rel="stylesheet">
+    <link href="./tls_Leave.css" rel="stylesheet">
+    <link href="../../Scripts/font-awesome.min.css" rel="stylesheet" />
+
+    <script src="./tlp_Jquery.3.4.1.js"></script>
+    <script src="./tls_kendo.all.min.js"></script>
+    <script src="./tls_bootstrap.min.js"></script>
+    <script src="./tls_moment.js"></script>
+    <script src="./tls_persian-date.js"></script>
+    <script src="./tls_persian-datepicker.js"></script>
+    <script src="./tls_knockout_3.4.2.js"></script>
+
+    <script>
+        var ParentXrm = window.parent.Xrm;
+        function ChartViewModel() {
+            var self = this;
+            //self.WebAPIURL = ParentXrm.context.getClientUrl() + "/api/data/v9.0";
+            self.ShamsiStartDate = ko.observable();
+            self.ShamsiEndDate = ko.observable();
+            self.MiladiStartDate = ko.observable();
+            self.MiladiEndDate = ko.observable();
+            self.UserId = ko.observable();
+
+            //calculate date to miladi
+            self.setMiladiDates = function () {
+                var startDate = self.ShamsiStartDate().split('/');
+                var miladiStartDate = new persianDate([parseInt(fixNumbers(startDate[0])), parseInt(fixNumbers(startDate[1])), parseInt(fixNumbers(startDate[2]))]).toCalendar('gregorian');
+                self.MiladiStartDate(miladiStartDate.year() + '/' + miladiStartDate.month() + '/' + miladiStartDate.date());
+
+                var endDate = self.ShamsiEndDate().split('/');
+                var miladiEndDate = new persianDate([parseInt(fixNumbers(endDate[0])), parseInt(fixNumbers(endDate[1])), parseInt(fixNumbers(endDate[2]))]).toCalendar('gregorian');
+                self.MiladiEndDate(miladiEndDate.year() + '/' + miladiEndDate.month() + '/' + miladiEndDate.date());
+            }
+            self.convertDateToJSONFormat = function (stringDate, type) {
+                //convert to js Date format
+                if (stringDate.length < 9) {
+                    stringDate = stringDate.split('/');
+                    if (stringDate[1].length < 2) stringDate[1] = '0' + stringDate[1];
+                    if (stringDate[2].length < 2) stringDate[2] = '0' + stringDate[2];
+                    stringDate.join('/');
+                }
+                var date = new Date(new Date(stringDate));
+                if (type == "end")
+                    date = new Date(date.setDate(date.getDate() + 1));//چون کوچکتر مساوی اکی نبود یک روز اضافه کردم از کوچکتر استفاده بشه
+                //return "2021-04-19T19:30:00.000Z"
+                return new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toJSON();
+            }
+
+            self.getLeaveAxes = function () {
+                $("#hourlyChart").empty();
+                $("#dailyChart").empty();
+                if (self.UserId() == undefined) {
+                    $("#hourlyChart").append('<text text-anchor="end" style="font: 16px Arial, Helvetica, sans - serif; white - space: pre; " x="454" y="29" stroke="none" fill="#8e8e8e" fill-opacity="1">مرخصی های ساعتی</text><br /><br /><p style="text-align:center">لطفا یک کاربر را انتخاب نمایید</p>');
+                    $("#dailyChart").append('<text text-anchor="end" style="font: 16px Arial, Helvetica, sans - serif; white - space: pre; " x="454" y="29" stroke="none" fill="#8e8e8e" fill-opacity="1">مرخصی های روزانه</text><br /><br /><p style="text-align:center">لطفا یک کاربر را انتخاب نمایید</p>');
+                }
+                else {
+                    $.ajax({
+                        method: "POST",
+                        url: ParentXrm.Page.context.getClientUrl() + "/api/data/v9.0/tls_CalculateLeaveTimes",
+                        contentType: "application/json; charset=utf-8",
+                        datatype: "json",
+                        data: JSON.stringify({ "UserId": self.UserId(), "StartDate": new Date(self.MiladiStartDate()), "EndDate": new Date(self.MiladiEndDate()) }),
+                        beforeSend: function (XMLHttpRequest) {
+                            //Specifying this header ensures that the results will be returned as JSON.
+                            XMLHttpRequest.setRequestHeader("Accept", "application/json");
+                        },
+                        success: function (response) {
+                            console.log(response);
+                            var leaveModel = JSON.parse(response.LeaveModel);
+
+                            for (var i = 0; i < leaveModel.HourlyUsed.length; i++)
+                                leaveModel.HourlyUsed[i] = self.ConvertTimeSpanToString(leaveModel.HourlyUsed[i]);
+
+                            for (var i = 0; i < leaveModel.RemainHours.length; i++)
+                                leaveModel.RemainHours[i] = self.ConvertTimeSpanToString(leaveModel.RemainHours[i]);
+
+                            for (var i = 0; i < leaveModel.Overtimes.length; i++)
+                                leaveModel.Overtimes[i] = self.ConvertTimeSpanToString(leaveModel.Overtimes[i]);
+
+                            self.createChart(leaveModel.YearsOfLeave, leaveModel.DailyUsed, leaveModel.RemainDays, leaveModel.HourlyUsed, leaveModel.RemainHours, leaveModel.Overtimes);
+                        }
+                    });
+                }
+            }
+            self.showDateFrames = function () {
+                $(".CustomFilterDate").hide();
+                $(".FilterDateContainer").show();
+            }
+            self.hideCustomDateFrame = function () {
+                $(".CustomFilterDate").hide();
+            }
+            self.ConvertTimeSpanToString = function (timeSpan) {
+                var time = moment.duration(timeSpan);
+                if (time.minutes().toString().length < 2)
+                    time = time.hours() + '.0' + time.minutes();
+                else
+                    time = time.hours() + '.' + time.minutes();
+                return time;
+            }
+            self.createChart = function (yearsOfLeave, dailyUsed, remainDays, hourlyUsed, remainHours, overtimes) {
+                $("#hourlyChart").empty();
+                $("#dailyChart").empty();
+                if (!dailyUsed.some(item => item > 0) && !remainDays.some(item => item > 0)) $("#dailyChart").append('<text text-anchor="end" style="font: 16px Arial, Helvetica, sans - serif; white - space: pre; " x="454" y="29" stroke="none" fill="#8e8e8e" fill-opacity="1">مرخصی های روزانه</text><br /><br /><p style="text-align:center">در این بازه مرخصی ثبت نگردیده است</p>');
+                else {
+                    $("#dailyChart").kendoChart({
+                        chartArea: {
+                            height: 500
+                        },
+                        title: {
+                            text: "مرخصی های روزانه"
+                        },
+                        seriesDefaults: {
+                            type: "column"
+                        },
+                        legend: {
+                            position: "bottom",
+                            labels: {
+                                margin: { right: 20 },
+                                padding: 15
+                            }
+                        },
+                        series: [{
+                            overlay: {
+                                gradient: "none"
+                            },
+                            name: "استفاد شده",
+                            data: dailyUsed, // [20, 28, 19],
+                            color: "#799664",
+                            labels: {
+                                visible: true,
+                                background: 'transparent',
+                                template: "#if (value > 0) {# #: value # #}#"
+                            },
+                            border: {
+                                color: "#799664"
+                            }
+                        }, {
+                            overlay: {
+                                gradient: "none"
+                            },
+                            name: "باقی مانده",
+                            data: remainDays, //[8, 8, 15],
+                            color: "#ebf5df",
+                            labels: {
+                                visible: true,
+                                background: 'transparent',
+                                template: "#if (value > 0) {# #: value # #}#"
+                            },
+                            border: {
+                                color: "#ebf5df"
+                            }
+                        }],
+                        valueAxis: {
+                            max: 30,
+                            majorUnit: 10,
+                            line: {
+                                visible: true
+                            },
+                            minorGridLines: {
+                                visible: false
+                            },
+                            labels: {
+                                rotation: "auto"
+                            }
+                        },
+                        categoryAxis: {
+                            categories: yearsOfLeave,// ["1399", "1398", "1400"],
+                            majorGridLines: {
+                                visible: false
+                            }
+                        },
+                        tooltip: {
+                            visible: false,
+                            template: "#= series.name #: #= value #"
+                        }
+                    });
+                }
+
+                if (!hourlyUsed.some(item => item > 0) && !remainHours.some(item => item > 0) && !overtimes.some(item => item > 0)) $("#hourlyChart").append('<text text-anchor="end" style="font: 16px Arial, Helvetica, sans - serif; white - space: pre; " x="454" y="29" stroke="none" fill="#8e8e8e" fill-opacity="1">مرخصی های ساعتی</text><br /><br /><p style="text-align:center">در این بازه مرخصی ثبت نگردیده است</p>');
+                else {
+                    $("#hourlyChart").kendoChart({
+                        chartArea: {
+                            height: 500
+                        },
+                        title: {
+                            text: "مرخصی های ساعتی"
+                        },
+                        seriesDefaults: {
+                            type: "column"
+                        },
+                        legend: {
+                            position: "bottom",
+                            labels: {
+                                margin: { right: 20 },
+                                padding: 15
+                            }
+                        },
+                        series: [{
+                            overlay: {
+                                gradient: "none"
+                            },
+                            name: "استفاد شده",
+                            data: hourlyUsed, //[20, 28, 19],
+                            color: "#799664",
+                            labels: {
+                                visible: true,
+                                background: 'transparent',
+                                template: "#if (value > 0) {# #: value # #}#"
+                            },
+                            border: {
+                                color: "#799664"
+                            }
+                        }, {
+                            overlay: {
+                                gradient: "none"
+                            },
+                            name: "باقی مانده",
+                            data: remainHours, // [8, 8, 15],
+                            color: "#b1c69b",
+                            labels: {
+                                visible: true,
+                                background: 'transparent',
+                                template: "#if (value > 0) {# #: value # #}#"
+                            },
+                            border: {
+                                color: "#b1c69b"
+                            }
+                        }, {
+                            overlay: {
+                                gradient: "none"
+                            },
+                            name: "اضافه کاری",
+                            data: overtimes, //[8, 8, 15],
+                            color: "#ebf5df",
+                            labels: {
+                                visible: true,
+                                background: 'transparent',
+                                template: "#if (value > 0) {# #: value # #}#"
+                            },
+                            border: {
+                                color: "#ebf5df"
+                            }
+                        }],
+                        valueAxis: {
+                            majorUnit: 5,
+                            line: {
+                                visible: true
+                            },
+                            minorGridLines: {
+                                visible: false
+                            },
+                            labels: {
+                                rotation: "auto"
+                            }
+                        },
+                        categoryAxis: {
+                            categories: yearsOfLeave, // ["1399", "1398", "1400"],
+                            majorGridLines: {
+                                visible: false
+                            }
+                        },
+                        tooltip: {
+                            visible: false,
+                            template: "#= series.name #: #= value #"
+                        }
+                    });
+                }
+
+            }
+            //today
+            self.getToday = function () {
+                var date = new persianDate();
+
+                self.ShamsiStartDate(date.year() + '/' + date.month() + '/' + date.date());
+                self.ShamsiEndDate(date.year() + '/' + date.month() + '/' + date.date());
+
+                self.setMiladiDates();
+                $(".FilterDateContainer").hide();
+                self.getLeaveAxes();
+            }
+            //yesterday
+            self.getYesterday = function () {
+                var date = new persianDate().subtract('days', 1);
+
+                self.ShamsiStartDate(date.year() + '/' + date.month() + '/' + date.date());
+                self.ShamsiEndDate(date.year() + '/' + date.month() + '/' + date.date());
+
+                self.setMiladiDates();
+                $(".FilterDateContainer").hide();
+                self.getLeaveAxes();
+            }
+            //thisWeek
+            self.getThisWeek = function () {
+                var startDate = new persianDate().startOf('week');
+                self.ShamsiStartDate(startDate.year() + '/' + startDate.month() + '/' + startDate.date());
+
+                var endDate = new persianDate().endOf('week');
+                self.ShamsiEndDate(endDate.year() + '/' + endDate.month() + '/' + endDate.date());
+
+                self.setMiladiDates();
+                $(".FilterDateContainer").hide();
+                self.getLeaveAxes();
+            }
+            //lastWeek
+            self.getLastWeek = function () {
+                var date = new persianDate().subtract('weeks', 1);
+
+                var startDate = date.startOf('week');
+                self.ShamsiStartDate(startDate.year() + '/' + startDate.month() + '/' + startDate.date());
+
+                var endDate = date.endOf('week');
+                self.ShamsiEndDate(endDate.year() + '/' + endDate.month() + '/' + endDate.date());
+
+                self.setMiladiDates();
+                $(".FilterDateContainer").hide();
+                self.getLeaveAxes();
+            }
+            //thisMonthUntilToday
+            self.getThisMonthTillToday = function () {
+                var date = new persianDate();
+
+                var startDate = date.startOf('month');
+                self.ShamsiStartDate(startDate.year() + '/' + startDate.month() + '/' + startDate.date());
+
+                self.ShamsiEndDate(date.year() + '/' + date.month() + '/' + date.date());
+
+                self.setMiladiDates();
+                $(".FilterDateContainer").hide();
+                self.getLeaveAxes();
+            }
+            //thisYear
+            self.getThisYear = function () {
+                var date = new persianDate();
+
+                var startDate = date.startOf('year');
+                self.ShamsiStartDate(startDate.year() + '/' + startDate.month() + '/' + startDate.date());
+
+                var endDate = date.endOf('year');
+                self.ShamsiEndDate(endDate.year() + '/' + endDate.month() + '/' + endDate.date());
+
+                self.setMiladiDates();
+                $(".FilterDateContainer").hide();
+                self.getLeaveAxes();
+            }
+            //thisSeason
+            self.getTheSeason = function () {
+                var year = new persianDate().year();
+                var month = new persianDate().month();
+                if (month < 3) {
+                    self.ShamsiStartDate(year + '/01/01');
+                    self.ShamsiEndDate(year + '/03/31');
+                }
+                if (month < 7 && month > 3) {
+                    self.ShamsiStartDate(year + '/04/01');
+                    self.ShamsiEndDate(year + '/06/31');
+                }
+                if (month < 10 && month > 6) {
+                    self.ShamsiStartDate(year + '/07/01');
+                    self.ShamsiEndDate(year + '/09/30');
+                }
+                if (month < 12 && month > 9) {
+                    self.ShamsiStartDate(year + '/10/01');
+                    self.ShamsiEndDate(year + '/12/30');
+                }
+                $(".FilterDateContainer").hide();
+                self.setMiladiDates();
+                self.getLeaveAxes();
+            }
+            //LastSeason
+            self.getLastSeason = function () {
+                var date = new persianDate();
+                var year = date.year();
+                var month = date.month();
+                if (month < 3) {
+                    self.ShamsiStartDate(date.subtract('years', 1).year() + '/10/01');
+                    self.ShamsiEndDate(date.subtract('years', 1).year() + '/12/30');
+                }
+                if (month < 7 && month > 3) {
+                    self.ShamsiStartDate(year + '/01/01');
+                    self.ShamsiEndDate(year + '/03/31');
+                }
+                if (month < 10 && month > 6) {
+                    self.ShamsiStartDate(year + '/04/01');
+                    self.ShamsiEndDate(year + '/06/31');
+                }
+                if (month < 12 && month > 9) {
+                    self.ShamsiStartDate(year + '/07/01');
+                    self.ShamsiEndDate(year + '/09/30');
+                }
+
+                $(".FilterDateContainer").hide();
+                self.setMiladiDates();
+                self.getLeaveAxes();
+            }
+            //ThisMonth
+            self.getThisMonth = function () {
+                var date = new persianDate();
+
+                self.ShamsiStartDate(date.year() + '/' + date.month() + '/' + date.startOf('month').date());
+                self.ShamsiEndDate(date.year() + '/' + date.month() + '/' + date.endOf('month').date());
+
+                $(".FilterDateContainer").hide();
+                self.setMiladiDates();
+                self.getLeaveAxes();
+            }
+            //LastMonth
+            self.getLastMonth = function () {
+                var date = new persianDate().subtract('months', 1);
+                self.ShamsiStartDate(date.year() + '/' + date.month() + '/' + date.startOf('month').date());
+                self.ShamsiEndDate(date.year() + '/' + date.month() + '/' + date.endOf('month').date());
+
+                self.setMiladiDates();
+                $(".FilterDateContainer").hide();
+                self.getLeaveAxes();
+            }
+
+            self.showCustomFilterDates = function () {
+                $(".FilterDateContainer").hide();
+                $(".CustomFilterDate").show();
+            }
+            self.setCustomDates = function () {
+                $(".CustomFilterDate").hide();
+                self.ShamsiStartDate($("#startDate").val());
+                self.ShamsiEndDate($("#endDate").val());
+                self.setMiladiDates();
+                self.getLeaveAxes();
+            }
+
+            self.openLooUpPopUp = function () {
+                var fetchXml = `<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="systemuser">
+    <attribute name="fullname" />
+    <attribute name="systemuserid" />
+    <filter type="and">
+      <condition attribute="fullname" operator="like" value="%`+ $("#users input").val()+`%" />
+    </filter>
+  </entity>
+</fetch>`;
+
+                //define data for lookupOptions
+                var lookupOptions =
+                {
+                    defaultEntityType: "systemuser",
+                    entityTypes: ["systemuser"],
+                    allowMultiSelect: false,
+                    defaultViewId: "00000000-0000-0000-00AA-000010001019",
+                    viewIds: ["00000000-0000-0000-00AA-000010001019"],
+                    searchText: $("#users input").val(),
+                    filters: [{ filterXml: fetchXml, entityLogicalName: "systemuser" }]
+                };
+
+                // Get account records based on the lookup Options
+                ParentXrm.Utility.lookupObjects(lookupOptions).then(
+                    function (response) {
+                        console.log(response);
+                        self.UserId(response[0].id);
+                        $("#users input").val(response[0].name);
+                        self.getLeaveAxes();
+                    },
+                    function (error) { console.log(error); });
+            }
+        }
+
+        var ViewModel = null;
+        $(document).ready(function () {
+            $('#id-c8b7c71b-dcb6-eb11-b819-0050569513ff-1-WebResource_LeaveDashboard-webResourceLabelControlWrapper', window.parent.document).css('height', 'unset');
+            $('#id-c8b7c71b-dcb6-eb11-b819-0050569513ff-1-WebResource_LeaveDashboard-webResourceLabelControlWrapper iframe', window.parent.document).css('border', 'none');
+            $('#id-c8b7c71b-dcb6-eb11-b819-0050569513ff-1-WebResource_LeaveDashboard-webResourceLabelControlWrapper', window.parent.document).css('overflow', 'hidden');
+            ViewModel = new ChartViewModel();
+            ko.applyBindings(ViewModel, document.getElementById("container"));
+
+            $("input#startDate").persianDatepicker({
+                observer: true,
+                format: 'YYYY/MM/DD',
+                altField: '.observer-example-alt',
+                autoClose: true,
+                navigator: {
+                    text: {
+                        btnNextText: "بعدی",
+                        btnPrevText: "قبلی",
+                    }
+                }
+            });
+            $("input#endDate").persianDatepicker({
+                observer: true,
+                format: 'YYYY/MM/DD',
+                altField: '.observer-example-alt',
+                autoClose: true
+            });
+
+            ViewModel.getThisMonth();
+            $(document).bind("kendo:skinChange", ViewModel.createChart);
+        });
+
+        var persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g],
+            arabicNumbers = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g],
+            fixNumbers = function (str) {
+                if (typeof str === 'string') {
+                    for (var i = 0; i < 10; i++) {
+                        str = str.replace(persianNumbers[i], i).replace(arabicNumbers[i], i);
+                    }
+                }
+                return str;
+            };
+
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div class="chart">
+            <div class="filterContainer">
+                <input class="col-md-6" type="text" placeholder="جستجو در بین کاربران" id="users" data-bind="click: $root.openLooUpPopUp" />
+                <button class="col-md-6" id="DateTime" data-bind="click: showDateFrames"><span data-bind="text: ShamsiStartDate"></span> تا <span data-bind="text: ShamsiEndDate"></span></button>
+                <div class="FilterDateContainer">
+                    <ul id="FilterDate">
+                        <!--<li data-bind="click: getToday">امروز</li>
+                        <li data-bind="click: getYesterday">دیروز</li>
+                        <li data-bind="click: getThisWeek">این هفته</li>
+                        <li data-bind="click: getLastWeek">هفته گذشته</li>-->
+                        <li data-bind="click: getThisMonth">این ماه</li>
+                        <li data-bind="click: getLastMonth">ماه گذشته</li>
+                        <!--<li data-bind="click: getThisMonthTillToday">این ماه تا امروز</li>
+                        <li data-bind="click: getTheSeason">این فصل</li>
+                        <li data-bind="click: getLastSeason">فصل گذشته</li>-->
+                        <li data-bind="click: getThisYear">سال جاری</li>
+                        <li id="customFilter" data-bind="click: showCustomFilterDates">انتخاب تاریخ سفارشی</li>
+                    </ul>
+                </div>
+                <div class="CustomFilterDate">
+                    <input type="text" id="startDate" data-bind="value: ShamsiStartDate" />
+                    <input type="text" id="endDate" data-bind="value: ShamsiEndDate" />
+                    <button id="apply" data-bind="click: $root.setCustomDates">اعمال</button>
+                    <button id="cancel" data-bind="click: $root.hideCustomDateFrame">انصراف</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="right-pane col-md-6">
+                    <div id="dailyChart"></div>
+                </div>
+                <div class="left-pane col-md-6">
+                    <div id="hourlyChart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

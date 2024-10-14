@@ -1,0 +1,380 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="../../Content/persian-datepicker.css" rel="stylesheet" />
+
+    <script src="../../Scripts/jquery-2.2.2.js"></script>
+    <script src="../../Scripts/persian-date.js"></script>
+    <script src="../../Scripts/persian-datepicker.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //Todo: on Click ghab zamani sefareshi append shamsi input and hide miladi input for start date and end date
+            $(document).on("click", "li[data-id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextقاب زمانی سفارشی']", function () {
+                $('body').append('<div data-reactroot="" id="Dashboard_DateRangeFilter-DateRangeFilter_CustomDateFlyout" dir="rtl" role="presentation" class="ak ld do pi pj kr ks qr qs kv webkitScroll flexbox"><div id="Dashboard_DateRangeFilter-DateRangeFilter_ParentCustomDateContainer" data-id="Dashboard_DateRangeFilter-DateRangeFilter_ParentCustomDateContainer" dir="rtl" role="presentation" class="b i f cu ou pk flexbox"><div id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameHeaderContainer" data-id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameHeaderContainer" dir="rtl" role="presentation" class="am ou pl ek me mg i flexbox"><span id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameLeftIcon" aria-label="بازگشت" role="Button" title="بازگشت" tabindex="0" data-id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameLeftIcon" class="symbolFont LeftArrowHead-symbol br di s ky "></span><label id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameText" data-id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameText" class="pm ">قاب زمانی سفارشی</label></div><div id="Dashboard_DateRangeFilter-DateRangeFilter_BodyContainer" data-id="Dashboard_DateRangeFilter-DateRangeFilter_BodyContainer" dir="rtl" role="presentation" class="b i pn oy oz pa flexbox"><div id="Dashboard_DateRangeFilter-DateRangeFilter_StartDateContainer" data-id="Dashboard_DateRangeFilter-DateRangeFilter_StartDateContainer" dir="rtl" role="presentation" class="b i po flexbox"><label id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameStartDateText" data-id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameStartDateText" class="pb pp ih pq pr ">تاریخ شروع</label><div id="Dashboard_DateRangeFilter" dir="rtl" role="presentation" class="bp sk ga flexbox" data-lp-id="MscrmControls.FieldControls.DateTimeControl|Dashboard_DateRangeFilter.DateRangeControl_StartDate|null"><div id="Dashboard_DateRangeFilter-Dashboard_DateRangeFilter.DateRangeControl_StartDate-datetime-description_container" data-id="Dashboard_DateRangeFilter.DateRangeControl_StartDate-datetime-description_container" dir="rtl" role="presentation" class="bp flexbox"><div id="Dashboard_DateRangeFilter-Dashboard_DateRangeFilter.DateRangeControl_StartDate-datetime-description" data-id="Dashboard_DateRangeFilter.DateRangeControl_StartDate-datetime-description" dir="rtl" role="presentation" class="bx ">لطفا تاریخ را در قالب ماه ، روز و سال وارد کنید.</div><input type="date" id="Dashboard_DateRangeFilter-Dashboard_DateRangeFilter.DateRangeControl_StartDate-date-time-input" aria-describedby="Dashboard_DateRangeFilter-Dashboard_DateRangeFilter.DateRangeControl_StartDate-datetime-description" data-id="Dashboard_DateRangeFilter.DateRangeControl_StartDate-date-time-input" value="2020-12-21" autocomplete="off" aria-multiline="false" class="kv jb nu bp ah ek qt mg ki kg qu qv by es bo fj pu qw qx qy qz ra rb rc y rd re rf rg rh ri rj rk ip rl rm rn ro rp rq rr rs rt ru rv rw rx ry rz sa sb sc sd se sf sg sh si jf t sj "></div></div></div><div id="Dashboard_DateRangeFilter-DateRangeFilter_EndDateContainer" data-id="Dashboard_DateRangeFilter-DateRangeFilter_EndDateContainer" dir="rtl" role="presentation" class="b i flexbox"><label id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameEndDateText" data-id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameEndDateText" class="pb pp ih pq pr ">تاریخ پایان</label><div id="Dashboard_DateRangeFilter" dir="rtl" role="presentation" class="bp sk ga flexbox" data-lp-id="MscrmControls.FieldControls.DateTimeControl|Dashboard_DateRangeFilter.DateRangeControl_EndDate|null"><div id="Dashboard_DateRangeFilter-Dashboard_DateRangeFilter.DateRangeControl_EndDate-datetime-description_container" data-id="Dashboard_DateRangeFilter.DateRangeControl_EndDate-datetime-description_container" dir="rtl" role="presentation" class="bp flexbox"><div id="Dashboard_DateRangeFilter-Dashboard_DateRangeFilter.DateRangeControl_EndDate-datetime-description" data-id="Dashboard_DateRangeFilter.DateRangeControl_EndDate-datetime-description" dir="rtl" role="presentation" class="bx ">لطفا تاریخ را در قالب ماه ، روز و سال وارد کنید.</div><input type="date" id="Dashboard_DateRangeFilter-Dashboard_DateRangeFilter.DateRangeControl_EndDate-date-time-input" aria-describedby="Dashboard_DateRangeFilter-Dashboard_DateRangeFilter.DateRangeControl_EndDate-datetime-description" data-id="Dashboard_DateRangeFilter.DateRangeControl_EndDate-date-time-input" value="2021-03-20" autocomplete="off" aria-multiline="false" class="kv jb nu bp ah ek qt mg ki kg qu qv by es bo fj pu qw qx qy qz ra rb rc y rd re rf rg rh ri rj rk ip rl rm rn ro rp rq rr rs rt ru rv rw rx ry rz sa sb sc sd se sf sg sh si jf t sj "></div></div></div></div><div id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameFooterContainer" data-id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameFooterContainer" dir="rtl" role="presentation" class="am ps pn oz pa pt mw flexbox"><div id="Dashboard_DateRangeFilter-ApplyContainer" data-id="Dashboard_DateRangeFilter-ApplyContainer" dir="rtl" role="presentation" class="kg flexbox"><button id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameApplyButton" aria-label="فیلتر محدوده تاریخ را اعمال کنید" role="button" title="فیلتر محدوده تاریخ را اعمال کنید" tabindex="0" data-id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameApplyButton" type="button" class="pu fk k jb pv s q r fu fv pw px ft bv py pz qa qb qc qd qe qf qg qh qi flexbox"><label id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameApplyText" data-id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameApplyText" class="ek ax k ah ab e s ">اعمال</label></button></div><div id="Dashboard_DateRangeFilter-CloseContainer" data-id="Dashboard_DateRangeFilter-CloseContainer" dir="rtl" role="presentation" class=" "><button id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameCloseButton" aria-label="انصراف" role="button" title="انصراف" tabindex="0" data-id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameCloseButton" type="button" class="qj cu jb pv s q r fu fv qk px ft ql qm qn py pz qb qc qd qo qp qe qf qg qh qq qi flexbox"><label id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameCloseText" data-id="Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameCloseText" class="ek ax jy ah ab e s ">بستن</label></button></div></div></div></div>');
+                setTimeout(function () {
+                    var startDate = $("input[data-id='Dashboard_DateRangeFilter.DateRangeControl_StartDate-date-time-input']").val();
+                    startDate = new Date(startDate);
+                    var persianStartDate = "";//startDate.getYearPersian() + '/' + startDate.getMonthPersian() + '/' + startDate.getDatePersian();
+
+                    var endDate = $("input[data-id='Dashboard_DateRangeFilter.DateRangeControl_EndDate-date-time-input']").val();
+                    endDate = new Date(endDate);
+                    var persianEndDate = ""; //endDate.getYearPersian() + '/' + endDate.getMonthPersian() + '/' + endDate.getDatePersian();
+
+                    //set display to none for crm start date
+                    $("input[data-id='Dashboard_DateRangeFilter.DateRangeControl_StartDate-date-time-input']").css("display", "none");
+                    //set display to none for crm end date
+                    $("input[data-id='Dashboard_DateRangeFilter.DateRangeControl_EndDate-date-time-input']").css("display", "none");
+
+                    //Todo: append shamsi inputs with persian date picker
+                    $("div[data-id='Dashboard_DateRangeFilter.DateRangeControl_StartDate-datetime-description_container']")
+                        .append("<input id='DateRangeControl_StartDate_Shamsi_Input' value='" + persianStartDate + "' style='border:none'/>");
+
+                    $("div[data-id='Dashboard_DateRangeFilter.DateRangeControl_EndDate-datetime-description_container']")
+                        .append("<input id='DateRangeControl_EndDate_Shamsi_Input' value='" + persianEndDate + "' style='border:none'/>");
+                    $("#DateRangeControl_StartDate_Shamsi_Input").persianDatepicker({
+                        observer: true,
+                        format: 'YYYY/MM/DD',
+                        altField: '.observer-example-alt'
+                    });
+                    $("#DateRangeControl_EndDate_Shamsi_Input").persianDatepicker({
+                        observer: true,
+                        format: 'YYYY/MM/DD',
+                        altField: '.observer-example-alt'
+                    });
+                }, 400);
+            });
+            //Todo : convert to miladi and set to miladi inputs
+            $(document).on("click", "button[data-id='Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameApplyButton']", function () {
+                var startDate = fixNumbers($("#DateRangeControl_StartDate_Shamsi_Input")[0].value).split("/");
+                var endDate = fixNumbers($("#DateRangeControl_EndDate_Shamsi_Input")[0].value).split("/");
+
+                startDate = jalali_to_gregorian(parseInt(startDate[0]), parseInt(startDate[1]), parseInt(startDate[2]));
+                if (startDate[1].toString().length == 1)
+                    startDate[1] = "0" + startDate[1];
+                if (startDate[2].toString().length == 1)
+                    startDate[2] = "0" + startDate[2];
+
+                endDate = jalali_to_gregorian(parseInt(endDate[0]), parseInt(endDate[1]), parseInt(endDate[2]));
+                if (endDate[1].toString().length == 1)
+                    endDate[1] = "0" + endDate[1];
+                if (endDate[2].toString().length == 1)
+                    endDate[2] = "0" + endDate[2];
+
+                $("input[data-id='Dashboard_DateRangeFilter.DateRangeControl_StartDate-date-time-input']")[0].value = startDate[1] + "/" + startDate[2] + "/" + startDate[0];
+                $("input[data-id='Dashboard_DateRangeFilter.DateRangeControl_EndDate-date-time-input']")[0].value = endDate[1] + "/" + endDate[2] + "/" + endDate[0];
+
+            });
+            $(document).on("change", "input#DateRangeControl_StartDate_Shamsi_Input", function () {
+                if ($("#DateRangeControl_StartDate_Shamsi_Input")[0].value.length < 9) return;
+                var startDate = fixNumbers($("#DateRangeControl_StartDate_Shamsi_Input")[0].value).split("/");
+                startDate = jalali_to_gregorian(parseInt(startDate[0]), parseInt(startDate[1]), parseInt(startDate[2]));
+                if (startDate[1].toString().length == 1)
+                    startDate[1] = "0" + startDate[1];
+                if (startDate[2].toString().length == 1)
+                    startDate[2] = "0" + startDate[2];
+
+
+                var input = document.getElementById("Dashboard_DateRangeFilter-Dashboard_DateRangeFilter.DateRangeControl_StartDate-date-time-input");
+                var lastValue = input.value;
+                input.value = startDate[0] + "-" + startDate[1] + "-" + startDate[2];
+                var event = new Event("input", { bubbles: true });
+                var tracker = input._valueTracker;
+                if (tracker) {
+                    tracker.setValue(lastValue);
+                }
+                input.dispatchEvent(event);
+                input.focus();
+                input.blur();
+            });
+            $(document).on("change", "input#DateRangeControl_StartDate_Shamsi_Input", function () {
+                if ($("#DateRangeControl_StartDate_Shamsi_Input")[0].value.length < 9) return;
+                var startDate = fixNumbers($("#DateRangeControl_StartDate_Shamsi_Input")[0].value).split("/");
+                startDate = jalali_to_gregorian(parseInt(startDate[0]), parseInt(startDate[1]), parseInt(startDate[2]));
+                if (startDate[1].toString().length == 1)
+                    startDate[1] = "0" + startDate[1];
+                if (startDate[2].toString().length == 1)
+                    startDate[2] = "0" + startDate[2];
+
+
+                var input = document.getElementById("Dashboard_DateRangeFilter-Dashboard_DateRangeFilter.DateRangeControl_StartDate-date-time-input");
+                var lastValue = input.value;
+                input.value = startDate[0] + "-" + startDate[1] + "-" + startDate[2];
+                var event = new Event("input", { bubbles: true });
+                var tracker = input._valueTracker;
+                if (tracker) {
+                    tracker.setValue(lastValue);
+                }
+                input.dispatchEvent(event);
+                input.focus();
+                input.blur();
+            });
+            $(document).on("change", "input#DateRangeControl_EndDate_Shamsi_Input", function () {
+                if ($("#DateRangeControl_EndDate_Shamsi_Input")[0].value.length < 9) return;
+                var endDate = fixNumbers($("#DateRangeControl_EndDate_Shamsi_Input")[0].value).split("/");
+                endDate = jalali_to_gregorian(parseInt(endDate[0]), parseInt(endDate[1]), parseInt(endDate[2]));
+                if (endDate[1].toString().length == 1)
+                    endDate[1] = "0" + endDate[1];
+                if (endDate[2].toString().length == 1)
+                    endDate[2] = "0" + endDate[2];
+
+
+                var input = document.getElementById("Dashboard_DateRangeFilter-Dashboard_DateRangeFilter.DateRangeControl_EndDate-date-time-input");
+                var lastValue = input.value;
+                input.value = endDate[0] + "-" + endDate[1] + "-" + endDate[2];
+                var event = new Event("input", { bubbles: true });
+                var tracker = input._valueTracker;
+                if (tracker) {
+                    tracker.setValue(lastValue);
+                }
+                input.dispatchEvent(event);
+                input.focus();
+                input.blur();
+            });
+
+
+            $(document).on("changeDate", "input[id='Dashboard_DateRangeFilter-Dashboard_DateRangeFilter.DateRangeControl_StartDate-date-time-input']", function () {
+                alert('change');
+            });
+            $(document).on("click", "button#testDate", function () {
+                $("body").append("<div data-reactroot='' id='Dashboard_DateRangeFilter-DateRangeFilterFlyout' dir='rtl' role='presentation' class='or ak kx do bd os kl km kn so kp webkitScroll flexbox'><ul id='Dashboard_DateRangeFilter-DateRangeFilterListOptionContainer' role='listbox' data-id='Dashboard_DateRangeFilter-DateRangeFilterListOptionContainer' class='b cu f ou ov lv ow flexbox'><label id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextModified' data-id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextModified' class='ox oy oz pa ek me ou mg dy '>تاریخ تغییر</label><li id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextامروز' aria-label='امروز' role='listitem' title='امروز' tabindex='0' data-id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextامروز' class='ox oy oz pa ek pb di dy s ks '>امروز</li><li id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextدیروز' aria-label='دیروز' role='listitem' title='دیروز' tabindex='0' data-id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextدیروز' class='ox oy oz pa ek pb di dy s ks '>دیروز</li><li id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextاین هفته' aria-label='این هفته' role='listitem' title='این هفته' tabindex='0' data-id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextاین هفته' class='ox oy oz pa ek pb di dy s ks '>این هفته</li><li id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextهفته گذشته' aria-label='هفته گذشته' role='listitem' title='هفته گذشته' tabindex='0' data-id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextهفته گذشته' class='ox oy oz pa ek pb di dy s ks '>هفته گذشته</li><li id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextاین ماه' aria-label='این ماه' role='listitem' title='این ماه' tabindex='0' data-id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextاین ماه' class='ox oy oz pa ek pb di dy s ks '>این ماه</li><li id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextماه گذشته' aria-label='ماه گذشته' role='listitem' title='ماه گذشته' tabindex='0' data-id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextماه گذشته' class='ox oy oz pa ek pb di dy s ks '>ماه گذشته</li><li id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextاین ماه تا امروز' aria-label='این ماه تا امروز' role='listitem' title='این ماه تا امروز' tabindex='0' data-id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextاین ماه تا امروز' class='ox oy oz pa ek pb di dy s ks '>این ماه تا امروز</li><li id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextاین فصل' aria-label='این فصل' role='listitem' title='این فصل' tabindex='0' data-id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextاین فصل' class='ox oy oz pa ek pb di dy s ks '>این فصل</li><li id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextفصل گذشته' aria-label='فصل گذشته' role='listitem' title='فصل گذشته' tabindex='0' data-id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextفصل گذشته' class='ox oy oz pa ek pb di dy s ks '>فصل گذشته</li><li id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextقاب زمانی سفارشی' aria-label='قاب زمانی سفارشی' aria-haspopup='true' role='listitem' title='قاب زمانی سفارشی' tabindex='0' data-id='Dashboard_DateRangeFilter-DateRangeFilter_FlyoutTextقاب زمانی سفارشی' class='ox oy oz ld ek pb di dy s ks '><div id='Dashboard_DateRangeFilter-DateRangeFilterOptionContainer' role='presentation' tabindex='-1' data-id='Dashboard_DateRangeFilter-DateRangeFilterOptionContainer' dir='rtl' class='dy r ks flexbox'><!-- react-text: 15 -->قاب زمانی سفارشی<!-- /react-text --><span id='Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameLeftIcon' title='قاب زمانی سفارشی' data-id='Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameLeftIcon' class='symbolFont Arrow-symbol br t fu s '></span></div></li></ul></div>")
+            });
+
+
+            //Todo : convert to miladi and set to miladi inputs
+            /*$(document).on("click", "button[data-id='Dashboard_DateRangeFilter-DateRangeFilter_CustomTimeFrameApplyButton']", function () {
+                var startDate = fixNumbers($("#DateRangeControl_StartDate_Shamsi_Input")[0].value).split("/");
+                var endDate = fixNumbers($("#DateRangeControl_EndDate_Shamsi_Input")[0].value).split("/");
+
+                startDate = jalali_to_gregorian(parseInt(startDate[0]), parseInt(startDate[1]), parseInt(startDate[2]));
+                if (startDate[1].toString().length == 1)
+                    startDate[1] = "0" + startDate[1];
+                if (startDate[2].toString().length == 1)
+                    startDate[2] = "0" + startDate[2];
+
+                endDate = jalali_to_gregorian(parseInt(endDate[0]), parseInt(endDate[1]), parseInt(endDate[2]));
+                if (endDate[1].toString().length == 1)
+                    endDate[1] = "0" + endDate[1];
+                if (endDate[2].toString().length == 1)
+                    endDate[2] = "0" + endDate[2];
+
+                $("input[data-id='Dashboard_DateRangeFilter.DateRangeControl_StartDate-date-time-input']")[0].value = startDate[1] + "/" + startDate[2] + "/" + startDate[0];
+                $("input[data-id='Dashboard_DateRangeFilter.DateRangeControl_EndDate-date-time-input']")[0].value = endDate[1] + "/" + endDate[2] + "/" + endDate[0];
+
+            });*/
+        });
+        function gregorian_to_jalali(gy, gm, gd) {
+            var g_d_m, jy, jm, jd, gy2, days;
+            g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+            gy2 = (gm > 2) ? (gy + 1) : gy;
+            days = 355666 + (365 * gy) + ~~((gy2 + 3) / 4) - ~~((gy2 + 99) / 100) + ~~((gy2 + 399) / 400) + gd + g_d_m[gm - 1];
+            jy = -1595 + (33 * ~~(days / 12053));
+            days %= 12053;
+            jy += 4 * ~~(days / 1461);
+            days %= 1461;
+            if (days > 365) {
+                jy += ~~((days - 1) / 365);
+                days = (days - 1) % 365;
+            }
+            if (days < 186) {
+                jm = 1 + ~~(days / 31);
+                jd = 1 + (days % 31);
+            } else {
+                jm = 7 + ~~((days - 186) / 30);
+                jd = 1 + ((days - 186) % 30);
+            }
+            return [jy, jm, jd];
+        }
+        function jalali_to_gregorian(jy, jm, jd) {
+            var sal_a, gy, gm, gd, days;
+            jy += 1595;
+            days = -355668 + (365 * jy) + (~~(jy / 33) * 8) + ~~(((jy % 33) + 3) / 4) + jd + ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+            gy = 400 * ~~(days / 146097);
+            days %= 146097;
+            if (days > 36524) {
+                gy += 100 * ~~(--days / 36524);
+                days %= 36524;
+                if (days >= 365) days++;
+            }
+            gy += 4 * ~~(days / 1461);
+            days %= 1461;
+            if (days > 365) {
+                gy += ~~((days - 1) / 365);
+                days = (days - 1) % 365;
+            }
+            gd = days + 1;
+            sal_a = [0, 31, ((gy % 4 === 0 && gy % 100 !== 0) || (gy % 400 === 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            for (gm = 0; gm < 13 && gd > sal_a[gm]; gm++) gd -= sal_a[gm];
+            return [gy, gm, gd];
+        }
+        var persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g],
+            arabicNumbers = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g],
+            fixNumbers = function (str) {
+                if (typeof str === 'string') {
+                    for (var i = 0; i < 10; i++) {
+                        str = str.replace(persianNumbers[i], i).replace(arabicNumbers[i], i);
+                    }
+                }
+                return str;
+            };
+
+    </script>
+    <style>
+        #DateRangeControl_StartDate_Shamsi_Input, #DateRangeControl_EndDate_Shamsi_Input {
+            padding-left: 0.5rem;
+            border-radius: 0px;
+            font-weight: 600;
+            padding-top: 0px;
+            border-color: transparent;
+            line-height: 2.5rem;
+            padding-bottom: 0px;
+            color: rgb(0, 0, 0);
+            border-width: 1px;
+            padding-right: 0.5rem;
+            height: 2.5rem;
+            box-sizing: border-box;
+            margin-left: 0px;
+            /*appearance: none;*/
+            width: 100%;
+            text-overflow: ellipsis;
+            outline: none !important;
+        }
+
+        .oy {
+            padding-bottom: 0.5rem;
+        }
+
+        .flexbox {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: flex;
+        }
+
+        .pq {
+            padding-top: 0.5rem;
+        }
+
+        .pr {
+            padding-bottom: 0.25rem;
+        }
+
+        .pl {
+            padding: 0.25rem;
+        }
+
+        .noOutline * {
+            outline: none !important;
+        }
+
+        .pn {
+            padding-top: 1rem;
+        }
+
+        .qs {
+            max-height: 366.484px;
+        }
+
+        .oz {
+            padding-left: 1.5rem;
+        }
+
+        .qr {
+            max-width: 1426px;
+        }
+
+        .pa {
+            padding-right: 1.5rem;
+        }
+
+        .pj {
+            top: 143.516px;
+        }
+
+        .pi {
+            left: 14px;
+        }
+
+        .ld {
+            visibility: visible;
+        }
+
+        .kv {
+            box-sizing: border-box;
+        }
+
+        .ks {
+        }
+
+        .kr {
+        }
+
+        .do {
+            overflow: auto;
+        }
+
+        .ak {
+            position: absolute;
+        }
+
+        div {
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pk {
+            box-shadow: rgb(0 0 0 / 50%) 4px 4px 4px 1px;
+        }
+
+        .ou {
+            border: 1px solid rgb(216, 216, 216);
+        }
+
+        .am {
+            flex-direction: row;
+        }
+
+        .cu {
+            background-color: rgb(255, 255, 255);
+        }
+
+        .ek {
+            font-size: 1rem;
+        }
+
+        .i {
+            justify-content: space-between;
+        }
+
+        .f {
+            height: 100%;
+        }
+
+        .mg {
+            color: rgb(0, 0, 0);
+        }
+
+        .b {
+            flex-direction: column;
+        }
+
+        .ld {
+            visibility: visible;
+        }
+
+        .bx {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="testDate">ClickToAppend</button>
+</body>
+</html>

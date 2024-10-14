@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<link href="../Content/style/kendo.rtl.min.css" rel="stylesheet" />
+	<link href="../Content/bootstrap.min.css" rel="stylesheet" />
+	<link href="../Content/DeviceCharts.css" rel="stylesheet" />
+	<link href="../Content/persian-datepicker.css" rel="stylesheet" />
+	<script src="../Scripts/jquery-2.2.2.js"></script>
+	<script src="../Scripts/persian-date.js"></script>
+	<script src="../Scripts/persian-datepicker.js"></script>
+	<script src="../Scripts/kendo.all.min.js"></script>
+	<script src="../Scripts/bootstrap.min.js"></script>
+	<script src="../Scripts/knockout_3.4.2.js"></script>
+	<script src="../Scripts/SampleDeviceCharts.js"></script>
+</head>
+
+<body id="charts" lang="en-US" style="overflow-wrap: break-word;">
+	<div style="margin-top: 15px;">
+		<div class="row">
+			<div class="btn-group buttons col-md-9">
+				<button class="active" data-bind="click: changeStep.bind($data,0)">تمام پایانه های فروش</button>
+				<button data-bind="click: changeStep.bind($data,1)">همه ی واحد ها</button>
+				<button data-bind="click:changeStep.bind($data,2)">واحد فنی</button>
+				<button data-bind="click: changeStep.bind($data,3)">واحد کنترل کیفیت</button>
+				<button data-bind="click: changeStep.bind($data,4)">واحد تست و تنظیف</button>
+				<button data-bind="click: changeStep.bind($data,5)">کاربران غیر فعال</button>
+				<button data-bind="click: changeStep.bind($data,6)">پایانه های فروش بر اساس ماه</button>
+				<button data-bind="click: changeStep.bind($data,7)">پایانه های فروش بر اساس سال</button>
+			</div>
+			<div class="col-md-1">شعبه
+				<select data-bind=" options: BranchList, optionsText: 'name', optionsValue:'id'">
+				</select>
+			</div>
+			<div class="col-md-2" data-bind="visible: Step() != 0 &amp;&amp; Step() != 6 &amp;&amp; Step() != 7">
+				<button id="dateTime" data-bind="click: showDateFrames">
+				<span data-bind="text: $root.ShamsiStartDate"></span> تا 
+				<span data-bind="text: $root.ShamsiEndDate"></span>
+				</button>
+
+				<div class="filterDateContainer">
+					<ul id="filterDate">
+						<li data-bind="click: getToday">امروز</li>
+						<li data-bind="click: getYesterday">دیروز</li>
+						<li data-bind="click: getThisWeek">این هفته</li>
+						<li data-bind="click: getLastWeek">هفته گذشته</li>
+						<li data-bind="click: getThisMonth">این ماه</li>
+						<li data-bind="click: getLastMonth">ماه گذشته</li>
+						<li data-bind="click: getThisMonthTillToday">این ماه تا امروز</li>
+						<li data-bind="click: getTheSeason">این فصل</li>
+						<li data-bind="click: getLastSeason">فصل گذشته</li>
+						<li data-bind="click: getThisYear">سال جاری</li>
+						<li id="customFilter" data-bind="click: showCustomFilterDates">انتخاب تاریخ سفارشی</li>
+					</ul>
+				</div>
+				<div class="customFilterDate">
+					<input type="text" id="startDate" data-bind="value: ShamsiStartDate">
+					<input type="text" id="endDate" data-bind="value: ShamsiEndDate">
+					<button id="apply" data-bind="click: $root.setCustomDates">اعمال</button>
+					<button id="cancel" data-bind="click: $root.hideCustomDateFrame">انصراف</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="chartContainer">
+			<div data-bind="visible: Step() == 0">
+				<div class="row">
+					<div class="chart col-md-8"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\bin\Debug\TLS.CRM.Test.exe.config
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\bin\Debug\TLS.CRM.Test.exe
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\bin\Debug\TLS.CRM.Test.pdb
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\obj\Debug\TLS.CRM.Test.csprojAssemblyReference.cache
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\obj\Debug\TLS.CRM.Test.csproj.CoreCompileInputs.cache
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\obj\Debug\TLS.CRM.Test.exe
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\obj\Debug\TLS.CRM.Test.pdb
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\bin\Debug\microsoft.identitymodel.dll
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\bin\Debug\Microsoft.Xrm.Sdk.xml
+C:\Users\mi.rahimi\source\repos\TLS.CRM\TLS.CRM.Test\obj\Debug\TLS.CRM.Test.csproj.CopyComplete
