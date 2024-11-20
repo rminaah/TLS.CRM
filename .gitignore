@@ -1,1 +1,8 @@
+
+# Ignore large specific file  
+_NCrunch_TLS.CRM/TLS.CRM.crunchsolution.cache
+
+# Ignore all nuget packages
+packages/
+
 **.zip
